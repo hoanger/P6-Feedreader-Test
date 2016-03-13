@@ -117,7 +117,6 @@ $(function() {
 
         beforeEach(function(done) {
             recordFeedInto(previousFeed);
-            console.log(previousFeed);
             loadFeed(2, done);
         });
 
@@ -127,7 +126,6 @@ $(function() {
          */
          it('changes feed content', function(done) {
             recordFeedInto(newFeed);
-            console.log(newFeed);
             expect(newFeed === previousFeed).toBe(false);
             done();
          });
