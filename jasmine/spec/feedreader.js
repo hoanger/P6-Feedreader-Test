@@ -101,9 +101,32 @@ $(function() {
      * selection.
      */
     describe('New Feed Selection', function() {
+        var previousFeed =[];
+        var newFeed = [];
+
+
+
+        beforeEach(function(done) {
+            $('div.feed a.entry-link article.entry h2').each(function(index, value){
+                previousFeed.push(value.innerText);
+            });
+            console.log(previousFeed);
+            loadFeed(2, done);
+        });
+
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         it('changes feed content', function(done) {
+            $('div.feed a.entry-link article.entry h2').each(function(index, value){
+                newFeed.push(value.innerText);
+            });
+            console.log(newFeed);
+            expect(newFeed === previousFeed).toBe(false);
+            done();
+         });
+
     });
 }());
