@@ -46,9 +46,9 @@ $(function() {
 
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
-
+    /* This is our second test suite. This suite is all about the menu.
+     */
+    describe('The menu', function() {
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
@@ -60,8 +60,11 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+    });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /* This is our third test suite. This suite is all about the Initial Entries.
+     */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -69,11 +72,14 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-
-    /* TODO: Write a new test suite named "New Feed Selection"
-
+    });
+    /* This is our fourth test suite. This suite is all about the New Feed
+     * selection.
+     */
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 }());
