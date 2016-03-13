@@ -13,6 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
+
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -57,8 +58,8 @@ $(function() {
 
          /* This test determines that the menu visibility toggles when clicked.
           * It covers both menu visibility starting points and is independent from
-          * the 'is hidden by default test' so any change of functionality would
-          * not affect the test.
+          * the 'is hidden by default test' so any future change of functionality
+          * or default will not affect the test.
           */
           it('dispays and hides when clicked', function() {
             if ($('body').hasClass("menu-hidden")) {
@@ -81,13 +82,20 @@ $(function() {
     /* This is our third test suite. This suite is all about the Initial Entries.
      */
     describe('Initial Entries', function() {
+        beforeEach(function(done) {
+            loadFeed(1, done);
+        });
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
+        /* This test ensures when the loadFeed function is called and completes
+         * its work, there is at least a single .entry element in the .feed div.
          */
+
+         it('contains at least a single entry', function(done) {
+            expect(document.getElementsByClassName('feed')[0].children.length > 0).toBe(true);
+            done();
+         });
+
+
     });
     /* This is our fourth test suite. This suite is all about the New Feed
      * selection.
