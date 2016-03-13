@@ -101,28 +101,32 @@ $(function() {
      * selection.
      */
     describe('New Feed Selection', function() {
+        // variables to store feed content
         var previousFeed =[];
         var newFeed = [];
 
-
+        /**
+        * @description Pushes current feed content into array
+        * @param {array} arr - The array to push contents into
+        */
+        function recordFeedInto(arr) {
+            $('div.feed a.entry-link article.entry h2').each(function(index, value){
+                arr.push(value.innerText);
+            });
+        }
 
         beforeEach(function(done) {
-            $('div.feed a.entry-link article.entry h2').each(function(index, value){
-                previousFeed.push(value.innerText);
-            });
+            recordFeedInto(previousFeed);
             console.log(previousFeed);
             loadFeed(2, done);
         });
 
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
+        /* This test ensures when a new feed is loaded by the loadFeed
+         * function that the content actually changes.
          */
          it('changes feed content', function(done) {
-            $('div.feed a.entry-link article.entry h2').each(function(index, value){
-                newFeed.push(value.innerText);
-            });
+            recordFeedInto(newFeed);
             console.log(newFeed);
             expect(newFeed === previousFeed).toBe(false);
             done();
