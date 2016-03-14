@@ -61,7 +61,7 @@ $(function() {
           * the 'is hidden by default test' so any future change of functionality
           * or default will not affect the test.
           */
-          it('dispays and hides when clicked', function() {
+          it('displays and hides when clicked', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass("menu-hidden")).toBe(false);
             $('.menu-icon-link').trigger('click');
@@ -105,21 +105,29 @@ $(function() {
             $('div.feed a.entry-link article.entry h2').each(function(index, value){
                 arr.push(value.innerText);
             });
+            console.log(arr);
         }
 
         beforeEach(function(done) {
-            recordFeedInto(previousFeed);
-            loadFeed(2, done);
+            loadFeed(2, function () {
+                recordFeedInto(previousFeed);
+                console.log("previousFeed=", previousFeed);
+                done();
+            });
         });
-
 
         /* This test ensures when a new feed is loaded by the loadFeed
          * function that the content actually changes.
          */
          it('changes feed content', function(done) {
-            recordFeedInto(newFeed);
-            expect(newFeed === previousFeed).toBe(false);
-            done();
+            loadFeed(3, function() {
+                recordFeedInto(newFeed);
+                console.log("newFeed=", newFeed);
+                for (var i = previousFeed.length - 1; i >= 0; i--) {
+                    expect(previousFeed[i]).not.toEqual(newFeed[i]);
+                };
+                done();
+            });
          });
 
     });
