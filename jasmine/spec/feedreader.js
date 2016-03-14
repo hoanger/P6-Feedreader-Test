@@ -42,8 +42,8 @@ $(function() {
             for (var i = allFeeds.length - 1; i >= 0; i--) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
-            };
-         })
+            }
+         });
 
     });
 
