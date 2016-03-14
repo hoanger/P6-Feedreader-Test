@@ -32,7 +32,7 @@ $(function() {
             for (var i = allFeeds.length - 1; i >= 0; i--) {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
-            };
+            }
          });
 
         /* This tests to make sure that each feed object in allFeeds
@@ -43,7 +43,7 @@ $(function() {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
             };
-         });
+         })
 
     });
 
