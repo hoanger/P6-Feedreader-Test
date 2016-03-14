@@ -62,18 +62,10 @@ $(function() {
           * or default will not affect the test.
           */
           it('dispays and hides when clicked', function() {
-            if ($('body').hasClass("menu-hidden")) {
-                $('.menu-icon-link').trigger('click');
-                expect($('body').hasClass("menu-hidden")).toBe(false);
-                $('.menu-icon-link').trigger('click');
-                expect($('body').hasClass("menu-hidden")).toBe(true);
-            }
-            if (!$('body').hasClass("menu-hidden")){
-                $('.menu-icon-link').trigger('click');
-                expect($('body').hasClass("menu-hidden")).toBe(true);
-                $('.menu-icon-link').trigger('click');
-                expect($('body').hasClass("menu-hidden")).toBe(false);
-            }
+            $('.menu-icon-link').trigger('click');
+            expect($('body').hasClass("menu-hidden")).toBe(false);
+            $('.menu-icon-link').trigger('click');
+            expect($('body').hasClass("menu-hidden")).toBe(true);
           });
 
 
