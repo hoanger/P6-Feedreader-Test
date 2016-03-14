@@ -82,9 +82,8 @@ $(function() {
          * its work, there is at least a single .entry element in the .feed div.
          */
 
-         it('contains at least a single entry', function(done) {
+         it('contains at least a single entry', function() {
             expect(document.getElementsByClassName('feed')[0].children.length > 0).toBe(true);
-            done();
          });
 
 
@@ -111,7 +110,6 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(2, function () {
                 recordFeedInto(previousFeed);
-                console.log("previousFeed=", previousFeed);
                 done();
             });
         });
@@ -122,7 +120,6 @@ $(function() {
          it('changes feed content', function(done) {
             loadFeed(3, function() {
                 recordFeedInto(newFeed);
-                console.log("newFeed=", newFeed);
                 for (var i = previousFeed.length - 1; i >= 0; i--) {
                     expect(previousFeed[i]).not.toEqual(newFeed[i]);
                 };
