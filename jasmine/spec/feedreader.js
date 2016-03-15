@@ -93,22 +93,16 @@ $(function() {
      */
     describe('New Feed Selection', function() {
         // variables to store feed content
-        var previousFeed =[];
-        var newFeed = [];
-
-        /**
-        * @description Pushes current feed content into array
-        * @param {array} arr - The array to push contents into
-        */
-        function recordFeedInto(arr) {
-            $('div.feed a.entry-link article.entry h2').each(function(index, value){
-                arr.push(value.innerText);
-            });
-        }
+        var previousFeed;
+        var newFeed;
 
         beforeEach(function(done) {
             loadFeed(2, function () {
-                recordFeedInto(previousFeed);
+                previousFeed = document.getElementsByClassName('feed')[0].innerText;
+                loadFeed(3, function() {
+                    newFeed = document.getElementsByClassName('feed')[0].innerText;
+                    done();
+                });
                 done();
             });
         });
@@ -116,14 +110,8 @@ $(function() {
         /* This test ensures when a new feed is loaded by the loadFeed
          * function that the content actually changes.
          */
-         it('changes feed content', function(done) {
-            loadFeed(3, function() {
-                recordFeedInto(newFeed);
-                for (var i = previousFeed.length - 1; i >= 0; i--) {
-                    expect(previousFeed[i]).not.toEqual(newFeed[i]);
-                }
-                done();
-            });
+         it('changes feed content', function() {
+            expect(previousFeed).not.toEqual(newFeed);
          });
 
     });
