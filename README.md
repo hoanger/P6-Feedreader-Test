@@ -2,7 +2,11 @@
 
 This application runs test suites for RSS feed reader.
 
-To run the application, open index.html in web browser and the Jasmine test results will appear at the bottom of the page when completed. There should be no red X and all tests results will appear successful.
+To run the application, open index.html in web browser and the Jasmine test results will appear at the bottom of the page when completed. There should be no red X and all tests results will appear successful except the last test which is for future functionality.
+
+The test for future functionality checks that if a feed item is hovered over, a window will appear. The window disappears when the mouse exits the feed item. Also it tests tat the window is hidden by default.
+
+
 
 ## The test specs are contined in jasmine/spc/feedreader.js
 

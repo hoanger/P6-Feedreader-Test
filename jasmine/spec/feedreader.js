@@ -115,4 +115,27 @@ $(function() {
          });
 
     });
+    /* This test suite is for future functionality and is related to the
+     * preview window
+     */
+    describe('Feed Item preview window', function() {
+         /* This tests to make sure that the preview window is hidden by default.
+          */
+        it('is hidden by default', function() {
+            expect($('.previewWindow').is(":hidden")).toBe(true);
+        });
+
+         /* This test determines that the menu visibility toggles when hovered in and out.
+          * It covers both menu visibility starting points and is independent from
+          * the 'is hidden by default test' so any future change of functionality
+          * or default will not affect the test.
+          */
+        it('opens preview window when hovered and hides when not', function () {
+            $('.entry').trigger('mouseenter');
+            expect($('.previewWindow').is(":visible")).toBe(true);
+            $('.entry').trigger('mouseleave');
+            expect($('.previewWindow').is(":hidden")).toBe(true);
+
+        });
+    });
 }());
