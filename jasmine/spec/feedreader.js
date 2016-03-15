@@ -83,7 +83,7 @@ $(function() {
          */
 
          it('contains at least a single entry', function() {
-            expect(document.getElementsByClassName('feed')[0].children.length > 0).toBe(true);
+            expect(document.getElementsByClassName('feed')[0].children.length).toBeGreaterThan(0);
          });
 
 
@@ -104,7 +104,6 @@ $(function() {
             $('div.feed a.entry-link article.entry h2').each(function(index, value){
                 arr.push(value.innerText);
             });
-            console.log(arr);
         }
 
         beforeEach(function(done) {
@@ -122,7 +121,7 @@ $(function() {
                 recordFeedInto(newFeed);
                 for (var i = previousFeed.length - 1; i >= 0; i--) {
                     expect(previousFeed[i]).not.toEqual(newFeed[i]);
-                };
+                }
                 done();
             });
          });
